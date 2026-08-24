@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="পশ্চিমবঙ্গ গ্রাম পঞ্চায়েত পরীক্ষা প্রস্তুতি — সহকারী, গ্রাম কর্মী, এক্সটেনশন ওয়ার্কার পরীক্ষার সম্পূর্ণ অনলাইন প্রস্তুতির প্ল্যাটফর্ম।">
+  <title>গ্রাম পঞ্চায়েত পরীক্ষা প্রস্তুতি | WB Panchayat Exam Prep</title>
+
+  <!-- Noto Sans Bengali font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       LOADING SCREEN (shown until app initializes)
+  ============================================================ -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-logo">
+      <div class="loading-spinner"></div>
+      <h2>গ্রাম পঞ্চায়েত পরীক্ষা প্রস্তুতি</h2>
+      <p>লোড হচ্ছে...</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       AUTH SCREEN (login / register / forgot password / OTP verify)
+  ============================================================ -->
+  <div id="authScreen" class="auth-screen hidden">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-logo">🏛️</div>
+        <h1>গ্রাম পঞ্চায়েত পরীক্ষা প্রস্তুতি</h1>
+        <p>পশ্চিমবঙ্গ গ্রাম পঞ্চায়েত নির্বাচন সহকারী / গ্রাম কর্মী / এক্সটেনশন ওয়ার্কার</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <h2>লগইন করুন</h2>
+        <div class="form-group">
+          <label for="loginEmail">ইমেইল</label>
+          <input type="email" id="loginEmail" placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">পাসওয়ার্ড</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">লগইন</button>
+        <div class="auth-links">
+          <a href="#" id="showRegister">নতুন অ্যাকাউন্ট তৈরি করুন</a>
+          <a href="#" id="showForgot">পাসওয়ার্ড ভুলে গেছি</a>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden">
+        <h2>নতুন অ্যাকাউন্ট</h2>
+        <div class="form-group">
+          <label for="regName">নাম</label>
+          <input type="text" id="regName" placeholder="আপনার নাম" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="regEmail">ইমেইল</label>
+          <input type="email" id="regEmail" placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="regPassword">পাসওয়ার্ড</label>
+          <input type="password" id="regPassword" placeholder="কমপক্ষে ৬ অক্ষর" required minlength="6" autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">রেজিস্টার করুন</button>
+        <p class="auth-note">রেজিস্টার করার পর আপনার ইমেইলে একটি OTP পাঠানো হবে।</p>
+        <div class="auth-links">
+          <a href="#" id="showLoginFromReg">ইতিমধ্যে অ্যাকাউন্ট আছে? লগইন</a>
+        </div>
+      </form>
+
+      <!-- OTP Verification Form -->
+      <form id="otpForm" class="auth-form hidden">
+        <h2>ইমেইল যাচাই করুন</h2>
+        <p class="auth-note" id="otpMessage">আপনার ইমেইলে ৬-সংখ্যার OTP পাঠানো হয়েছে।</p>
+        <div class="form-group">
+          <label for="otpCode">OTP কোড</label>
+          <input type="text" id="otpCode" placeholder="123456" maxlength="6" pattern="[0-9]{6}" required inputmode="numeric">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">যাচাই করুন</button>
+        <div class="auth-links">
+          <a href="#" id="resendOtp">OTP পুনরায় পাঠান</a>
+          <a href="#" id="showLoginFromOtp">লগইন পেজে ফিরুন</a>
+        </div>
+      </form>
+
+      <!-- Forgot Password Form -->
+      <form id="forgotForm" class="auth-form hidden">
+        <h2>পাসওয়ার্ড রিসেট</h2>
+        <div class="form-group">
+          <label for="forgotEmail">ইমেইল</label>
+          <input type="email" id="forgotEmail" placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">রিসেট লিংক পাঠান</button>
+        <div class="auth-links">
+          <a href="#" id="showLoginFromForgot">লগইন পেজে ফিরুন</a>
+        </div>
+      </form>
+
+      <!-- Reset Password Form (after OTP for forgot) -->
+      <form id="resetForm" class="auth-form hidden">
+        <h2>নতুন পাসওয়ার্ড সেট করুন</h2>
+        <p class="auth-note" id="resetMessage">আপনার ইমেইলে রিসেট OTP পাঠানো হয়েছে।</p>
+        <div class="form-group">
+          <label for="resetOtp">OTP কোড</label>
+          <input type="text" id="resetOtp" placeholder="123456" maxlength="6" required inputmode="numeric">
+        </div>
+        <div class="form-group">
+          <label for="resetPassword">নতুন পাসওয়ার্ড</label>
+          <input type="password" id="resetPassword" placeholder="কমপক্ষে ৬ অক্ষর" required minlength="6" autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">পাসওয়ার্ড আপডেট করুন</button>
+        <div class="auth-links">
+          <a href="#" id="showLoginFromReset">লগইন পেজে ফিরুন</a>
+        </div>
+      </form>
+
+      <div id="authError" class="auth-error hidden"></div>
+      <div id="authSuccess" class="auth-success hidden"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN APP (shown after login)
+  ============================================================ -->
+  <div id="app" class="app hidden">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <button id="menuToggle" class="menu-toggle" aria-label="Menu">☰</button>
+        <span class="brand-text">🏛️ গ্রাম পঞ্চায়েত প্রস্তুতি</span>
+      </div>
+      <div class="navbar-user">
+        <span id="userName" class="user-name"></span>
+        <button id="logoutBtn" class="btn btn-sm btn-ghost">লগআউট</button>
+      </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar">
+      <nav class="sidebar-nav">
+        <a href="#/dashboard" class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">📊</span> <span class="nav-label">ড্যাশবোর্ড</span>
+        </a>
+        <a href="#/study" class="nav-item" data-page="study">
+          <span class="nav-icon">📚</span> <span class="nav-label">পড়াশোনা</span>
+        </a>
+        <a href="#/study-plan" class="nav-item" data-page="study-plan">
+          <span class="nav-icon">📅</span> <span class="nav-label">পড়ার প্ল্যান</span>
+        </a>
+        <a href="#/practice" class="nav-item" data-page="practice">
+          <span class="nav-icon">✏️</span> <span class="nav-label">প্র্যাকটিস</span>
+        </a>
+        <a href="#/mock-test" class="nav-item" data-page="mock-test">
+          <span class="nav-icon">📝</span> <span class="nav-label">মক টেস্ট</span>
+        </a>
+        <a href="#/quiz" class="nav-item" data-page="quiz">
+          <span class="nav-icon">🧠</span> <span class="nav-label">কুইজ</span>
+        </a>
+        <a href="#/current-affairs" class="nav-item" data-page="current-affairs">
+          <span class="nav-icon">📰</span> <span class="nav-label">কারেন্ট অ্যাফেয়ার্স</span>
+        </a>
+        <a href="#/pyq" class="nav-item" data-page="pyq">
+          <span class="nav-icon">📋</span> <span class="nav-label">PYQ</span>
+        </a>
+        <a href="#/report" class="nav-item" data-page="report">
+          <span class="nav-icon">📈</span> <span class="nav-label">রিপোর্ট</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Overlay for mobile sidebar -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Main Content Area -->
+    <main id="content" class="content">
+      <!-- Page content rendered here by JS router -->
+    </main>
+  </div>
+
+  <!-- ============================================================
+       MODAL CONTAINER (for quiz/test taking, chapter reading, etc.)
+  ============================================================ -->
+  <div id="modalOverlay" class="modal-overlay hidden">
+    <div id="modalContent" class="modal-content"></div>
+  </div>
+
+  <!-- Toast notifications -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- ============================================================
+       SCRIPTS — loaded as ES modules, modular structure
+       Order matters: config -> auth -> data -> router -> pages
+  ============================================================ -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
