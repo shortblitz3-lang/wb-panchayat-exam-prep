@@ -1,0 +1,5 @@
+name: gram-panchayat-prep-functions
+version: 1.0.0
+description: Netlify Functions for Gram Panchayat Exam Prep Gmail OTP email
+dependencies:
+  nodemailer: ^6.9.13
